@@ -1,4 +1,4 @@
-# Docker Image with Zowe CLI &middot; [![Build Status](https://img.shields.io/badge/build-automated-blue.svg)](https://lvntest002912.bpc.broadcom.net/jenkins/job/ProVisionM/job/MSD/job/zowe-cli-dockerfiles/)
+# Docker Image with Zowe CLI
 
 The purpose of this image is to make Zowe CLI, plug-ins, and related tools available without installing it and its dependencies on
 any system.
@@ -61,9 +61,7 @@ docker stop zowe-cli
 
 ### Jenkins
 
-An example how Zowe CLI image is used in Jenkins with Docker containers is the last stage of the [Jenkins pipeline for this project](/Jenkinsfile).
-
-The Jenkins agent is defined to be a Docker container that is using this image (`zowe-cli`) for Broadcom Artifactory.
+The Jenkins agent is defined to be a Docker container that is using this image (`zowe-cli`) for your private registory (e.g.  Artifactory).
 
 You need to define credentials to Artifactory in your Jenkins with the ID `artifactoryCredentials`:
 
@@ -72,7 +70,7 @@ agent {
     docker {
         image 'zowe-cli:latest'
         label 'docker'  // Use a label that is used by Jenkins agents with Docker
-        registryUrl 'https://msd-common-docker.artifactory-lvn.broadcom.net/'
+        registryUrl 'https://your-docker-registry/'
         registryCredentialsId 'artifactoryCredentials'
     }
 }
